@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
  name: itop
 spec:
-  replicas: 1
+  replicas: 2
   revisionHistoryLimit: 50
   selector:
     matchLabels:
