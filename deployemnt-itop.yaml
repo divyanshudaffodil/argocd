@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: itop
+spec:
+  replicas: 1
+  revisionHistoryLimit: 50
+  selector:
+    matchLabels:
+      version: v1
+      product: itop
+  strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        product: itop
+        version: v1
+      name: itop
+    spec:
+      containers:
+      - name: itop
+        image: vbkunin/itop:2.7.1
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 300m
+            memory: 250Mi
+        ports:
+        - containerPort: 80
+

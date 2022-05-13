@@ -1,0 +1,15 @@
+apiVersion: v1  
+kind: Service  
+metadata:  
+  name: itop  
+  labels:  
+    app: itop
+spec:  
+  ports:  
+    - name: itop
+      port: 8000
+      targetPort: 80	  
+  type: NodePort
+  selector:  
+    product: itop
+
